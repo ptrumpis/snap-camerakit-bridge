@@ -1,0 +1,1 @@
+# snap-camerakit-bridge
