@@ -1,0 +1,47 @@
+{
+    "name": "@ptrumpis/snap-camerakit-bridge",
+    "version": "0.0.1-alpha",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "description": "Snapchat's camera-kit in Node.js hackerman style 🤓",
+    "keywords": [
+        "snapchat",
+        "snapcamera",
+        "camerakit",
+        "snap",
+        "camera",
+        "kit",
+        "bridge"
+    ],
+    "main": "src/index.js",
+    "type": "module",
+    "engines": {
+        "node": ">=18.17"
+    },
+    "scripts": {
+        "build": "webpack",
+        "postinstall": "npx playwright install --with-deps chromium",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Patrick Trumpis <ptrumpis@pm.me>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ptrumpis/snap-camerakit-brdige.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ptrumpis/snap-camerakit-brdige/issues"
+    },
+    "dependencies": {
+        "@snap/camera-kit": "~1.0.0",
+        "http-server": "~14.1.1",
+        "playwright": "~1.40.1",
+        "ws": "~8.18.1"
+    },
+    "devDependencies": {
+        "terser-webpack-plugin": "~5.3.14",
+        "webpack": "~5.98.0",
+        "webpack-cli": "~6.0.1"
+    }
+}
