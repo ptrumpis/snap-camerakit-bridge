@@ -21,7 +21,7 @@ jobs:
           scope: '@ptrumpis'
 
       - name: Install dependencies
-        run: npm ci
+        run: CI=true npm ci
 
       - name: Run build script
         run: npm run build
