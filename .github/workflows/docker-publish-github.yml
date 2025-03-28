@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Image to GitHub
 
 on:
   push:
@@ -53,7 +53,7 @@ jobs:
       - name: Debug Extracted Tag
         run: echo "Extracted Tag ${{ env.TAG_NAME }}"
 
-      - name: Build and Push Docker Image (Multi-Arch)
+      - name: Build and Push Docker Image to GitHub
         uses: docker/build-push-action@v5
         with:
           context: .
