@@ -5,7 +5,7 @@
         "access": "public",
         "registry": "https://registry.npmjs.org/"
     },
-    "description": "Snapchat's camera-kit in Node.js hackerman style 🤓",
+    "description": "Library for calling the Snapchat Camera-Kit API in Node.js Hackerman style 🤓",
     "keywords": [
         "snapchat",
         "snapcamera",
