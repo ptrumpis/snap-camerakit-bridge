@@ -20,8 +20,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
           scope: '@ptrumpis'
 
-      - name: Install dependencies
-        run: CI=true npm ci
+      - name: Install dependencies without running postinstall
+        run: npm ci --ignore-scripts
 
       - name: Run build script
         run: npm run build
