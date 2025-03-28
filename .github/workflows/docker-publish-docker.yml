@@ -8,7 +8,6 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -53,9 +52,6 @@ jobs:
       - name: Debug Extracted Tag
         run: echo "Extracted Tag ${{ env.TAG_NAME }}"
 
-      - name: Debug Image Name
-        run: echo "Image Name ${{ env.IMAGE_NAME }}"
-
       - name: Build and Push Docker Image to Docker Hub
         uses: docker/build-push-action@v5
         with:
@@ -64,8 +60,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ${{ env.REGISTRY }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
-            ${{ env.REGISTRY }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.REGISTRY }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_HUB_REPOSITORY  }}:${{ env.TAG_NAME }}
+            ${{ env.REGISTRY }}/${{ vars.DOCKER_HUB_USERNAME }}/${{ vars.DOCKER_HUB_REPOSITORY  }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
           provenance: false  # Fix für unknown/unknown
