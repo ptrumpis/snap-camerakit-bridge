@@ -1,0 +1,14 @@
+.git/
+.github/
+.vscode/
+node_modules/
+*.crt
+*.key
+*.log
+.env
+.gitignore
+.npmignore
+Dockerfile
+
+docker/*
+!docker/index.js
