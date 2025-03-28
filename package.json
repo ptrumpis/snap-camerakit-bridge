@@ -16,12 +16,35 @@
         "bridge"
     ],
     "main": "src/index.js",
+    "exports": {
+        ".": "./src/index.js",
+        "./bridge": {
+            "import": "./src/bridge/bridge.js",
+            "default": "./src/bridge/bridge.js"
+        },
+        "./client": {
+            "import": "./src/client/client.js",
+            "default": "./src/client/client.js"
+        },
+        "./server": {
+            "import": "./src/server/server.js",
+            "default": "./src/server/server.js"
+        },
+        "./errors": {
+            "import": "./src/common/errors.js",
+            "default": "./src/common/errors.js"
+        },
+        "./messages": {
+            "import": "./src/common/messages.js",
+            "default": "./src/common/messages.js"
+        }
+    },
     "type": "module",
     "engines": {
         "node": ">=18.17"
     },
     "scripts": {
-        "build": "webpack",
+        "build": "webpack --mode production",
         "gencert": "openssl req -x509 -nodes -days 3650 -subj \"/C=CA/ST=QC/O=Snap Inc./CN=localhost\" -newkey rsa:4096 -keyout localhost.key -out localhost.crt",
         "print-key": "base64 localhost.key | tr -d '\n'",
         "print-cert": "base64 localhost.crt | tr -d '\n'",
