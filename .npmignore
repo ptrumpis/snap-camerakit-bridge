@@ -1,11 +1,12 @@
 .git/
 .github/
 .vscode/
-docker/
 node_modules/
 *.crt
 *.key
 *.log
 .env
-.dockerignore
-Dockerfile
+
+#docker/
+#.dockerignore
+#Dockerfile
