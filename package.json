@@ -57,10 +57,10 @@
     "author": "Patrick Trumpis <ptrumpis@pm.me>",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ptrumpis/snap-camerakit-brdige.git"
+        "url": "git+https://github.com/ptrumpis/snap-camerakit-bridge.git"
     },
     "bugs": {
-        "url": "https://github.com/ptrumpis/snap-camerakit-brdige/issues"
+        "url": "https://github.com/ptrumpis/snap-camerakit-bridge/issues"
     },
     "dependencies": {
         "@snap/camera-kit": "~1.0.0",
