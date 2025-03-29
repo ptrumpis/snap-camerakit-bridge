@@ -65,7 +65,7 @@
     "dependencies": {
         "@snap/camera-kit": "~1.0.0",
         "http-server": "~14.1.1",
-        "playwright": "~1.40.1",
+        "playwright": "~1.51.1",
         "ws": "~8.18.1"
     },
     "devDependencies": {
