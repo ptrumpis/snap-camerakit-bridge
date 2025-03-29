@@ -8,6 +8,30 @@
 # 👻 Snap Camera-Kit Bridge
 Docker Container and Library for calling the Snapchat Camera-Kit API in Node.js Hackerman style 🤓
 
+## 🚀 Usage
+### npm
+Install
+```shell
+npm i @ptrumpis/snap-camerakit-bridge
+```
+
+#### Use Bridge with Docker container
+Build container
+```shell
+npm run docker-build
+```
+
+Run container
+```shell
+npm run docker-run
+```
+
+#### Use Bridge locally without Docker container
+To set up a local Bridge without Docker you need to install dependencies with
+```shell
+npm run install-bridge
+```
+
 ## ℹ️ Info
 ### Dependents
 This package is a dependency of:  
