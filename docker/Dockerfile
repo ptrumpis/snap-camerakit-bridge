@@ -4,11 +4,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app
 
-RUN npm install
+RUN npm install --ignore-scripts --omit=dev
 
 COPY . /usr/src/app
 
-RUN npm run build
 RUN npx playwright install --with-deps chromium
 
 EXPOSE 3000
