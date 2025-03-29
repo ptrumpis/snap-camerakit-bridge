@@ -15,6 +15,7 @@
         "kit",
         "bridge"
     ],
+    "license": "GPL-3.0",
     "main": "src/index.js",
     "exports": {
         ".": "./src/index.js",
@@ -45,12 +46,12 @@
     },
     "scripts": {
         "build": "webpack --mode production",
-        "docker-build": "docker build -t snap-camerakit-bridge -f docker/Dockerfile .",
+        "docker-build": "npm run build && docker build -t snap-camerakit-bridge -f docker/Dockerfile .",
         "docker-run": "docker run --rm -p 3000:3000 -p 8080:8080 snap-camerakit-bridge",
         "gencert": "openssl req -x509 -nodes -days 3650 -subj \"/C=CA/ST=QC/O=Snap Inc./CN=localhost\" -newkey rsa:4096 -keyout localhost.key -out localhost.crt",
         "print-key": "base64 localhost.key | tr -d '\n'",
         "print-cert": "base64 localhost.crt | tr -d '\n'",
-        "postinstall": "npx playwright install --with-deps chromium",
+        "install-bridge": "npx playwright install --with-deps chromium",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Patrick Trumpis <ptrumpis@pm.me>",
