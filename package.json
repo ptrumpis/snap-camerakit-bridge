@@ -1,6 +1,6 @@
 {
     "name": "@ptrumpis/snap-camerakit-bridge",
-    "version": "0.0.1",
+    "version": "0.0.1-camera-kit-v1.0",
     "publishConfig": {
         "access": "public",
         "registry": "https://registry.npmjs.org/"
