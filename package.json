@@ -63,7 +63,7 @@
         "url": "https://github.com/ptrumpis/snap-camerakit-bridge/issues"
     },
     "dependencies": {
-        "@snap/camera-kit": "~1.0.0",
+        "@snap/camera-kit": "~1.1.0",
         "http-server": "~14.1.1",
         "playwright": "~1.40.1",
         "ws": "~8.18.1"
