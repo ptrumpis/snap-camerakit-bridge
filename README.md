@@ -29,7 +29,12 @@ npm run docker-run
 #### Use Bridge locally without Docker container
 To set up a local Bridge without Docker you need to install dependencies with
 ```shell
-npm run install-bridge
+npm run install-bridge-deps
+```
+
+And start local Bridge with
+```shell
+node ./docker/index.js
 ```
 
 ## ℹ️ Info
