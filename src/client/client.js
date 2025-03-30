@@ -62,7 +62,11 @@ class CameraKitClient {
             });
 
             socket.on('error', (err) => {
-                reject(new BridgeError(err.message, err.name));
+                if (err instanceof AggregateError) {
+                    reject(new BridgeError(err.errors.map(err => err.message).join('\n'), err.name));
+                } else {
+                    reject(new BridgeError(err.message, err.name));
+                }
             });
         }).finally(() => {
             clearTimeout(timeoutId);
