@@ -29,41 +29,53 @@ class CameraKitServer {
 
     async start() {
         if (this.#httpServer || this.#socketServer) {
-            throw new Error('Server is already up and running!');
+            return Promise.resolve(false);
         }
 
-        this.#httpServer = new HttpServer({ rootDir: this.#rootDir, port: this.#httpPort });
-        this.#socketServer = new SocketServer(this.#socketPort);
+        return new Promise(async (resolve, reject) => {
+            try {
+                this.#httpServer = new HttpServer({ rootDir: this.#rootDir, port: this.#httpPort });
+                this.#socketServer = new SocketServer(this.#socketPort);
 
-        const results = await Promise.allSettled([
-            this.#httpServer.start(),
-            this.#socketServer.start(),
-        ]);
+                const results = await Promise.allSettled([
+                    this.#httpServer.start(),
+                    this.#socketServer.start(),
+                ]);
 
-        const hasError = results.some(result => result.status === 'rejected');
-        if (hasError) {
-            await this.close();
-        }
+                const hasError = results.some(result => result.status === 'rejected');
+                if (hasError) {
+                    await this.close();
+                }
 
-        return !hasError;
+                return resolve(!hasError);
+            } catch (err) {
+                reject(err);
+            }
+        });
     }
 
     async close() {
         if (!this.#httpServer || !this.#socketServer) {
-            return false;
+            return Promise.resolve(false);
         }
 
-        const results = await Promise.allSettled([
-            this.#httpServer.close(),
-            this.#socketServer.close()
-        ]);
+        return new Promise(async (resolve, reject) => {
+            try {
+                const results = await Promise.allSettled([
+                    this.#httpServer.close(),
+                    this.#socketServer.close()
+                ]);
 
-        this.#httpServer = null;
-        this.#socketServer = null;
+                this.#httpServer = null;
+                this.#socketServer = null;
 
-        const hasError = results.some(result => result.status === 'rejected');
+                const hasError = results.some(result => result.status === 'rejected');
 
-        return !hasError;
+                return resolve(!hasError);
+            } catch (err) {
+                reject(err);
+            }
+        });
     }
 }
 

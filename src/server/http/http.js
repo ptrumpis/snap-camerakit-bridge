@@ -32,7 +32,7 @@ class HttpServer {
 
     start() {
         if (this.#server) {
-            return Promise.resolve();
+            return Promise.resolve(false);
         }
 
         return new Promise(async (resolve, reject) => {
@@ -67,7 +67,7 @@ class HttpServer {
 
     close() {
         if (!this.#server) {
-            return Promise.resolve();
+            return Promise.resolve(false);
         }
 
         return new Promise((resolve, reject) => {
@@ -76,6 +76,7 @@ class HttpServer {
                     this.#server.close();
                     this.#server = null;
                 }
+
                 resolve(true);
             } catch (err) {
                 reject(err);

@@ -23,7 +23,7 @@ class SocketServer {
 
     start() {
         if (this.#wss) {
-            return Promise.resolve();
+            return Promise.resolve(false);
         }
 
         return new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ class SocketServer {
 
     close() {
         if (!this.#wss) {
-            return Promise.resolve();
+            return Promise.resolve(false);
         }
 
         return new Promise((resolve, reject) => {
@@ -67,6 +67,8 @@ class SocketServer {
                 this.#wss.close(() => {
                     resolve(true);
                 });
+
+                this.#wss = null;
             } catch (err) {
                 reject(err);
             }

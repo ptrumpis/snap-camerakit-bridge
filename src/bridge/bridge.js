@@ -14,6 +14,10 @@ class CameraKitBridge {
     }
 
     start() {
+        if (this.#browser) {
+            return Promise.resolve(false);
+        }
+
         return new Promise(async (resolve, reject) => {
             try {
                 this.#browser = await chromium.launch({
@@ -48,7 +52,7 @@ class CameraKitBridge {
 
                 await this.#page.goto(this.#targetUrl, { waitUntil: 'domcontentloaded' });
 
-                resolve(true);
+                return resolve(true);
             } catch (err) {
                 reject(err);
             }
@@ -57,7 +61,7 @@ class CameraKitBridge {
 
     close() {
         if (!this.#browser) {
-            return Promise.resolve();
+            return Promise.resolve(false);
         }
 
         return new Promise(async (resolve, reject) => {
@@ -65,7 +69,10 @@ class CameraKitBridge {
                 await this.#page.close();
                 await this.#browser.close();
 
-                resolve(true);
+                this.#page = null;
+                this.#browser = null;
+
+                return resolve(true);
             } catch (err) {
                 reject(err);
             }
