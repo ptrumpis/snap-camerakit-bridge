@@ -45,9 +45,12 @@ class CameraKitServer {
                 const hasError = results.some(result => result.status === 'rejected');
                 if (hasError) {
                     await this.close();
+
+                    const errors = results.filter(r => r.status === 'rejected').map(r => r.reason);
+                    throw new AggregateError(errors, `Failed to start server due to:\n${errors.map(error => error.message).join('\n')}`);
                 }
 
-                return resolve(!hasError);
+                return resolve(true);
             } catch (err) {
                 reject(err);
             }
@@ -70,8 +73,12 @@ class CameraKitServer {
                 this.#socketServer = null;
 
                 const hasError = results.some(result => result.status === 'rejected');
+                if (hasError) {
+                    const errors = results.filter(r => r.status === 'rejected').map(r => r.reason);
+                    throw new AggregateError(errors, `Failed to stop server due to:\n${errors.map(error => error.message).join('\n')}`);
+                }
 
-                return resolve(!hasError);
+                return resolve(true);
             } catch (err) {
                 reject(err);
             }
