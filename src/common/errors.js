@@ -9,6 +9,15 @@ class BridgeError extends Serializable(Error) {
     static isBridgeError(value) {
         return value instanceof BridgeError;
     }
+
+    toJSON() {
+        return {
+            message: this.message,
+            name: this.name,
+            stack: this.stack,
+            ...super.toJSON()
+        };
+    }
 }
 
 class MessageError extends BridgeError { }
