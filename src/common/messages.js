@@ -1,74 +1,46 @@
-class Message {
-    static registry = new Map();
+import { Serializable } from "./serialize.js";
 
-    constructor(type) {
-        if (this.constructor === Message) {
+class Message extends Serializable() {
+    constructor() {
+        if (new.target === Message) {
             throw new Error('Cannot instantiate an abstract class Message directly');
         }
-        this.type = type;
+
+        super();
     }
 
-    toString() {
-        return `[${this.constructor.name}]`;
-    }
-
-    toJSON() {
-        return {
-            ...this,
-            className: this.constructor.name
-        };
-    }
-
-    static fromJSON(json) {
-        const { className, ...rest } = json;
-
-        if (!className) {
-            throw new Error(`Missing className in JSON.`);
-        }
-
-        const messageClass = Message.registry.get(className);
-        if (!messageClass) {
-            throw new Error(`Class "${className}" not found for deserialization.`);
-        }
-
-        if (!(messageClass.prototype instanceof Message)) {
-            throw new Error(`Class "${className}" is not a valid Message class.`);
-        }
-
-        const instance = new messageClass(rest.message);
-        Object.assign(instance, rest);
-        return instance;
+    static isMessage(value) {
+        return value instanceof Message;
     }
 }
 
 class CallMessage extends Message {
     constructor(method, params) {
-        super('call');
+        super();
         this.method = method;
         this.params = params;
     }
 }
-registerMessageClass(CallMessage);
 
 class DataMessage extends Message {
     constructor(data) {
-        super('data');
+        super();
         this.data = data;
     }
 }
-registerMessageClass(DataMessage);
 
 class ErrorMessage extends Message {
     constructor(error) {
-        super('error');
+        super();
         this.error = error;
     }
 }
-registerMessageClass(ErrorMessage);
 
-function registerMessageClass(cls) {
-    Message.registry.set(cls.name, cls);
-}
+Message.register(Message);
+
+CallMessage.register(CallMessage);
+DataMessage.register(DataMessage);
+ErrorMessage.register(ErrorMessage);
 
 export { Message, CallMessage, DataMessage, ErrorMessage };
 export default { Message, CallMessage, DataMessage, ErrorMessage };
