@@ -17,13 +17,13 @@ class CameraKitClient {
         return this.#sendMessage(message);
     }
 
-    async getLensGroup(groupId, withMeta = true) {
-        const message = new CallMessage('getLensGroup', [groupId, withMeta]);
+    async loadLensGroup(groupId, withMeta = true) {
+        const message = new CallMessage('loadLensGroup', [groupId, withMeta]);
         return this.#sendMessage(message);
     }
 
-    async getLensMeta(lensId) {
-        const message = new CallMessage('getLensMeta', [lensId]);
+    async getLensMetadata(lensId) {
+        const message = new CallMessage('getLensMetadata', [lensId]);
         return this.#sendMessage(message);
     }
 

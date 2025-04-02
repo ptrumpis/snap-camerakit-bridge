@@ -22,7 +22,7 @@ class CameraKitWeb {
         }
     }
 
-    async getLensGroup(groupId, withMeta = true) {
+    async loadLensGroup(groupId, withMeta = true) {
         if (!this.#cameraKit) {
             throw new CameraKitError('CameraKit is not initialized!');
         }
@@ -37,7 +37,7 @@ class CameraKitWeb {
 
         if (withMeta) {
             lenses = await Promise.all(lenses.map(async (lens) => {
-                const lensMeta = await this.getLensMeta(lens.id);
+                const lensMeta = await this.getLensMetadata(lens.id);
                 return CameraKitWeb.formatLens({ ...lensMeta, ...lens });
             }));
         }
@@ -45,7 +45,7 @@ class CameraKitWeb {
         return lenses;
     }
 
-    async getLensMeta(lensId) {
+    async getLensMetadata(lensId) {
         if (!this.#cameraKit) {
             throw new CameraKitError('CameraKit is not initialized!');
         }
@@ -69,10 +69,11 @@ class CameraKitWeb {
         let result = {
             lens_id: lensId || "",
             unlockable_id: lensId,
+            group_id: lens.groupId || "",
             uuid: uuid,
             deeplink: deeplinkUrl || "",
-            lens_name: lens.name || "",
-            user_display_name: lens.lensCreator?.displayName || "",
+            lens_name: (lens.name || "")?.trim(),
+            user_display_name: (lens.lensCreator?.displayName || "")?.trim(),
             snapcode_url: lens.snapcode?.imageUrl || lens.scannable?.snapcodeImageUrl || CameraKitWeb.snapcodeUrl(uuid) || "",
             icon_url: lens.iconUrl || lens.content?.iconUrl || lens.content?.iconUrlBolt || "",
             lens_url: lens.content?.lnsUrl || lens.content?.lnsUrlBolt || "",
@@ -85,14 +86,15 @@ class CameraKitWeb {
             result.image_sequence = {
                 url_pattern: lens.content.preview?.imageSequenceWebpUrlPattern || "",
                 size: lens.content.preview?.imageSequenceSize || 0,
+                frame_interval_ms: 300,
             }
         }
 
-        Object.keys(result).forEach(key => {
-            if (typeof result[key] === 'string') {
-                result[key] = result[key].trim();
-            }
-        });
+        if (Array.isArray(lens.content?.assetManifest) && lens.content.assetManifest.length) {
+            result.assets = lens.content.assetManifest.map((manifest) => {
+                return manifest.id;
+            });
+        }
 
         return result;
     }

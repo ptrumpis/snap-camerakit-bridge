@@ -2,7 +2,8 @@ import { BridgeError, MessageError, MethodNotFoundError } from '../common/errors
 import { Message, DataMessage, ErrorMessage, CallMessage } from '../common/messages.js';
 import CameraKitWeb from './web.js';
 
-const cameraKitWeb = new CameraKitWeb();
+window.CameraKitWeb = CameraKitWeb;
+window.cameraKitWeb = new CameraKitWeb();
 
 const urlParams = new URLSearchParams(window?.location?.search || '');
 const websocketPort = urlParams.get('websocketPort');
@@ -31,17 +32,17 @@ if (!websocketPort) {
                 throw new MessageError(e.message, e.name);
             }
 
-            if (!(message instanceof CallMessage)) {
-                throw new MessageError(`Message '${message.type}' is currently not supported.`);
-            }
+            if (message instanceof CallMessage) {
+                const { method, params } = message;
+                if (typeof window.cameraKitWeb[method] !== 'function') {
+                    throw new MethodNotFoundError(`Method '${method}' not found`);
+                }
 
-            const { method, params } = message;
-            if (typeof cameraKitWeb[method] !== 'function') {
-                throw new MethodNotFoundError(`Method '${method}' not found`);
+                const result = await window.cameraKitWeb[method](...params);
+                sendMessage(new DataMessage(result));
+            } else {
+                throw new MessageError(`Message '${message.type}' is not supported.`);
             }
-
-            const result = await cameraKitWeb[method](...params);
-            sendMessage(new DataMessage(result));
         } catch (error) {
             if (!(error instanceof BridgeError)) {
                 error = new BridgeError(error.message, error.name);
@@ -51,6 +52,3 @@ if (!websocketPort) {
         }
     };
 }
-
-window.cameraKitWeb = cameraKitWeb;
-window.CameraKitWeb = CameraKitWeb;
