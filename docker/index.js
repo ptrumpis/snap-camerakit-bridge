@@ -7,11 +7,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 try {
-    const server = new CameraKitServer({ httpPort: 8080, socketPort: 3000, rootDir: join(__dirname, '../dist') })
+    const httpPort = 8080;
+    const socketPort = 3000;
+
+    const targetUrl = `https://localhost:${httpPort}/?websocketPort=${socketPort}`;
+
+    const server = new CameraKitServer({ httpPort, socketPort, rootDir: join(__dirname, '../dist') })
     await server.start();
 
-    const bridge = new CameraKitBridge({ targetUrl: 'https://localhost:8080/?websocketPort=3000' });
+    const bridge = new CameraKitBridge({ targetUrl });
     await bridge.start();
+
+    console.log('Camera-Kit Bridge is up and waiting for client connections!');
 } catch (e) {
     console.error(e.message);
 }
