@@ -1,3 +1,4 @@
+import { Action } from "./actions.js";
 import { Serializable } from "./serialize.js";
 
 class Message extends Serializable() {
@@ -11,6 +12,23 @@ class Message extends Serializable() {
 
     static isMessage(value) {
         return value instanceof Message;
+    }
+}
+
+class ActionMessage extends Message {
+    constructor(action) {
+        if (!Action.isAction(action)) {
+            throw new Error(`Action "${className}" is not a valid Action class.`);
+        }
+
+        super();
+        this.action = action;
+    }
+
+    static fromJSON(json) {
+        const instance = super.fromJSON(json);
+        instance.action = Action.fromJSON(instance.action);
+        return instance;
     }
 }
 
@@ -37,10 +55,10 @@ class ErrorMessage extends Message {
 }
 
 Message.register(Message);
-
+ActionMessage.register(ActionMessage);
 CallMessage.register(CallMessage);
 DataMessage.register(DataMessage);
 ErrorMessage.register(ErrorMessage);
 
-export { Message, CallMessage, DataMessage, ErrorMessage };
-export default { Message, CallMessage, DataMessage, ErrorMessage };
+export { Message, ActionMessage, CallMessage, DataMessage, ErrorMessage };
+export default { Message, ActionMessage, CallMessage, DataMessage, ErrorMessage };

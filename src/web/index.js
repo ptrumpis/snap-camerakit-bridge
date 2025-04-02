@@ -1,5 +1,6 @@
+import { Action } from '../common/actions.js';
 import { BridgeError, MessageError, MethodNotFoundError } from '../common/errors.js';
-import { Message, DataMessage, ErrorMessage, CallMessage } from '../common/messages.js';
+import { Message, DataMessage, ErrorMessage, ActionMessage, CallMessage } from '../common/messages.js';
 import CameraKitWeb from './web.js';
 
 window.CameraKitWeb = CameraKitWeb;
@@ -32,7 +33,11 @@ if (!websocketPort) {
                 throw new MessageError(e.message, e.name);
             }
 
-            if (message instanceof CallMessage) {
+            if (message instanceof ActionMessage && Action.isAction(message.action)) {
+                sendMessage(new DataMessage(true));
+
+                eval(message.action.getCode());
+            } else if (message instanceof CallMessage) {
                 const { method, params } = message;
                 if (typeof window.cameraKitWeb[method] !== 'function') {
                     throw new MethodNotFoundError(`Method '${method}' not found`);

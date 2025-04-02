@@ -38,6 +38,10 @@
         "./messages": {
             "import": "./src/common/messages.js",
             "default": "./src/common/messages.js"
+        },
+        "./actions": {
+            "import": "./src/common/actions.js",
+            "default": "./src/common/actions.js"
         }
     },
     "type": "module",
