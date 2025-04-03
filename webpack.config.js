@@ -30,7 +30,7 @@ const config = {
 
 const configWeb = {
   ...config,
-  entry: './src/web/index.js',
+  entry: './src/web/web.js',
   output: {
     filename: 'web.js',
     path: path.resolve(__dirname, 'dist'),
