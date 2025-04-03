@@ -35,6 +35,10 @@
             "import": "./src/web/CameraKitWeb.js",
             "default": "./src/web/CameraKitWeb.js"
         },
+        "./format": {
+            "import": "./src/format/index.js",
+            "default": "./src/format/index.js"
+        },
         "./errors": {
             "import": "./src/common/errors.js",
             "default": "./src/common/errors.js"
