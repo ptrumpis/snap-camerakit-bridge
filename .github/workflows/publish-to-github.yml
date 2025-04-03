@@ -26,7 +26,11 @@ jobs:
       - name: Install dependencies without running postinstall
         run: npm ci --ignore-scripts
 
+      - name: Run tests
+        run: npm test
+
       - name: Run build script
+        if: success()
         run: npm run build
 
       - name: Publish to GitHub Packages
