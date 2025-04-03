@@ -71,7 +71,8 @@ class CameraKitWeb {
         }
 
         try {
-            return this.#cameraKit.lensRepository.getLensMetadata(lensId);
+            const meta = await this.#cameraKit.lensRepository.getLensMetadata(lensId);
+            return meta || {};
         } catch (e) {
             throw new LensMetadataError(e.message);
         }

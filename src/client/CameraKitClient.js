@@ -35,13 +35,13 @@ class CameraKitClient {
     async loadLensGroup(groupId, withMeta = true) {
         const message = new CallMessage('loadLensGroup', [groupId, withMeta]);
         const lenses = await this.#sendMessage(message)
-        return lenses ? lenses.map(this.#formatter.format) : lenses;
+        return (Array.isArray(lenses) && lenses.length) ? lenses.map(this.#formatter.format) : lenses;
     }
 
     async getLensMetadata(lensId) {
         const message = new CallMessage('getLensMetadata', [lensId]);
         const meta = await this.#sendMessage(message);
-        return meta ? meta.map(this.#formatter.format) : meta;
+        return (typeof meta === 'object' && Object.keys(meta).length) ? this.#formatter.format(meta) : meta;
     }
 
     async #sendMessage(message) {
