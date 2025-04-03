@@ -1,15 +1,24 @@
 import WebSocket from 'ws';
 import { BridgeError, ProtocolError } from '../common/errors.js';
 import { Message, CallMessage, ErrorMessage, DataMessage } from '../common/messages.js';
+import LensFormatter from '../format/LensFormatter.js';
+import OriginalFormatter from '../format/OriginalFormatter.js';
 import pkg from '../../package.json' with { type: 'json' };
 
 class CameraKitClient {
     #address;
     #timeout;
+    #formatter;
 
-    constructor(address, options = {}) {
+    constructor(address, { timeout = 6000, formatter = OriginalFormatter } = {}) {
         this.#address = address;
-        this.#timeout = options.timeout || 6000;
+        this.#timeout = parseInt(timeout) || 6000;
+
+        if (!(formatter?.prototype instanceof LensFormatter)) {
+            throw new Error('Invalid formatter. You need to pass a sub class of LensFormatter.');
+        }
+
+        this.#formatter = formatter;
     }
 
     async init(apiToken) {
@@ -19,17 +28,20 @@ class CameraKitClient {
 
     async loadLens(lensId, groupId, withMeta = true) {
         const message = new CallMessage('loadLens', [lensId, groupId, withMeta]);
-        return this.#sendMessage(message);
+        const lens = await this.#sendMessage(message);
+        return lens ? this.#formatter.format(lens) : lens;
     }
 
     async loadLensGroup(groupId, withMeta = true) {
         const message = new CallMessage('loadLensGroup', [groupId, withMeta]);
-        return this.#sendMessage(message);
+        const lenses = await this.#sendMessage(message)
+        return lenses ? lenses.map(this.#formatter.format) : lenses;
     }
 
     async getLensMetadata(lensId) {
         const message = new CallMessage('getLensMetadata', [lensId]);
-        return this.#sendMessage(message);
+        const meta = await this.#sendMessage(message);
+        return meta ? meta.map(this.#formatter.format) : meta;
     }
 
     async #sendMessage(message) {
