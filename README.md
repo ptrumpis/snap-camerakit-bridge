@@ -34,7 +34,7 @@ npm run install-bridge-deps
 
 And start local Bridge with
 ```shell
-node ./docker/index.js
+npm run start-bridge
 ```
 
 ## ℹ️ Info
