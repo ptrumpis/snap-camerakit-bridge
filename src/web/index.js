@@ -1,7 +1,7 @@
 import { Action } from '../common/actions.js';
 import { BridgeError, MessageError, MethodNotFoundError, ProtocolError } from '../common/errors.js';
 import { Message, DataMessage, ErrorMessage, ActionMessage, CallMessage } from '../common/messages.js';
-import CameraKitWeb from './web.js';
+import CameraKitWeb from './CameraKitWeb.js';
 
 window.CameraKitWeb = CameraKitWeb;
 window.cameraKitWeb = new CameraKitWeb();

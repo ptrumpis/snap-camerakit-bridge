@@ -20,16 +20,20 @@
     "exports": {
         ".": "./src/index.js",
         "./bridge": {
-            "import": "./src/bridge/bridge.js",
-            "default": "./src/bridge/bridge.js"
+            "import": "./src/bridge/CameraKitBridge.js",
+            "default": "./src/bridge/CameraKitBridge.js"
         },
         "./client": {
-            "import": "./src/client/client.js",
-            "default": "./src/client/client.js"
+            "import": "./src/client/CameraKitClient.js",
+            "default": "./src/client/CameraKitClient.js"
         },
         "./server": {
-            "import": "./src/server/server.js",
-            "default": "./src/server/server.js"
+            "import": "./src/server/CameraKitServer.js",
+            "default": "./src/server/CameraKitServer.js"
+        },
+        "./web": {
+            "import": "./src/web/CameraKitWeb.js",
+            "default": "./src/web/CameraKitWeb.js"
         },
         "./errors": {
             "import": "./src/common/errors.js",
@@ -56,7 +60,7 @@
         "print-key": "base64 localhost.key | tr -d '\n'",
         "print-cert": "base64 localhost.crt | tr -d '\n'",
         "install-bridge-deps": "npx playwright install --with-deps chromium",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "mocha tests/**/*.test.js"
     },
     "author": "Patrick Trumpis <ptrumpis@pm.me>",
     "repository": {
@@ -73,6 +77,8 @@
         "ws": "~8.18.1"
     },
     "devDependencies": {
+        "mocha": "^11.1.0",
+        "sinon": "^20.0.0",
         "terser-webpack-plugin": "~5.3.14",
         "webpack": "~5.98.0",
         "webpack-cli": "~6.0.1"

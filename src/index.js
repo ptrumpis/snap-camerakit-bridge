@@ -1,15 +1,17 @@
-import CameraKitBridge from '../src/bridge/bridge.js';
-import CameraKitClient from '../src/client/client.js';
-import CameraKitServer from '../src/server/server.js';
-import * as Actions from '../src/common/actions.js';
-import * as Errors from '../src/common/errors.js';
-import * as Messages from '../src/common/messages.js';
+import CameraKitBridge from './bridge/CameraKitBridge.js';
+import CameraKitClient from './client/CameraKitClient.js';
+import CameraKitServer from './server/CameraKitServer.js';
+import CameraKitWeb from './web/CameraKitWeb.js';
+import * as Actions from './common/actions.js';
+import * as Errors from './common/errors.js';
+import * as Messages from './common/messages.js';
 
-export * from '../src/bridge/bridge.js';
-export * from '../src/client/client.js';
-export * from '../src/server/server.js';
-export * from '../src/common/actions.js';
-export * from '../src/common/errors.js';
-export * from '../src/common/messages.js';
+export * from './bridge/CameraKitBridge.js';
+export * from './client/CameraKitClient.js';
+export * from './server/CameraKitServer.js';
+export * from './web/CameraKitWeb.js';
+export * from './common/actions.js';
+export * from './common/errors.js';
+export * from './common/messages.js';
 
-export default { CameraKitBridge, CameraKitClient, CameraKitServer, ...Actions, ...Errors, ...Messages };
+export default { CameraKitBridge, CameraKitClient, CameraKitServer, CameraKitWeb, ...Actions, ...Errors, ...Messages };

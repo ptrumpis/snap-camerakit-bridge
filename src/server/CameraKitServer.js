@@ -1,5 +1,5 @@
-import HttpServer from "./http/http.js";
-import SocketServer from "./socket/socket.js";
+import HttpServer from "./http/HttpServer.js";
+import SocketServer from "./socket/SocketServer.js";
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
