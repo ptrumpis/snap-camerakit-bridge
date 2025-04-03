@@ -5,7 +5,7 @@ class Action extends Serializable() {
 
     constructor(code) {
         if (new.target === Action) {
-            throw new Error('Cannot instantiate an abstract class Action directly');
+            throw new Error('Cannot instantiate an abstract class Action directly!');
         }
 
         super();
@@ -41,9 +41,10 @@ class ReloadAction extends Action {
     }
 }
 
-Action.register(Action);
-ResetAction.register(ResetAction);
-ReloadAction.register(ReloadAction);
+Action
+    .register(Action)
+    .register(ResetAction)
+    .register(ReloadAction);
 
 export { Action, ResetAction, ReloadAction };
 export default { Action, ResetAction, ReloadAction };

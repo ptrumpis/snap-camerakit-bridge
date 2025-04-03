@@ -1,6 +1,6 @@
 import WebSocket from 'ws';
-import { BridgeError, MessageError } from '../common/errors.js';
-import { Message, CallMessage } from '../common/messages.js';
+import { BridgeError, ProtocolError } from '../common/errors.js';
+import { Message, CallMessage, ErrorMessage, DataMessage } from '../common/messages.js';
 import pkg from '../../package.json' with { type: 'json' };
 
 class CameraKitClient {
@@ -14,6 +14,11 @@ class CameraKitClient {
 
     async init(apiToken) {
         const message = new CallMessage('init', [apiToken]);
+        return this.#sendMessage(message);
+    }
+
+    async loadLens(lensId, groupId, withMeta = true) {
+        const message = new CallMessage('loadLens', [lensId, groupId, withMeta]);
         return this.#sendMessage(message);
     }
 
@@ -45,10 +50,17 @@ class CameraKitClient {
                         if (typeof dataString !== 'string') {
                             throw new Error(`Received invalid data type: ${typeof dataString}`);
                         }
+
                         message = Message.fromJSON(JSON.parse(dataString));
-                        resolve(message);
+                        if (message instanceof DataMessage) {
+                            resolve(message.data);
+                        } else if (message instanceof ErrorMessage) {
+                            reject(message.error);
+                        } else {
+                            reject(new ProtocolError(`Received invalid response message: ${message}`));
+                        }
                     } catch (e) {
-                        reject(new MessageError(e.message, e.name));
+                        reject(new ProtocolError(`Failed to parse message: ${e.message}`, e.name));
                     } finally {
                         socket.close();
                     }

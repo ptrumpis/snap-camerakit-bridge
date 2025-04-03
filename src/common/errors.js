@@ -21,6 +21,7 @@ class BridgeError extends Serializable(Error) {
 }
 
 class MessageError extends BridgeError { }
+class ProtocolError extends MessageError { }
 class MethodNotFoundError extends MessageError { }
 class CameraKitError extends BridgeError { }
 class APITokenError extends CameraKitError { }
@@ -29,15 +30,17 @@ class LensError extends CameraKitError { }
 class LensGroupsError extends CameraKitError { }
 class LensMetadataError extends CameraKitError { }
 
-BridgeError.register(BridgeError);
-CameraKitError.register(CameraKitError);
-MessageError.register(MessageError);
-MethodNotFoundError.register(MethodNotFoundError);
-APITokenError.register(APITokenError);
-BootstrapError.register(BootstrapError);
-LensError.register(LensError);
-LensGroupsError.register(LensGroupsError);
-LensMetadataError.register(LensMetadataError);
+BridgeError
+    .register(BridgeError)
+    .register(MessageError)
+    .register(ProtocolError)
+    .register(MethodNotFoundError)
+    .register(CameraKitError)
+    .register(APITokenError)
+    .register(BootstrapError)
+    .register(LensError)
+    .register(LensGroupsError)
+    .register(LensMetadataError);
 
-export { BridgeError, CameraKitError, MessageError, MethodNotFoundError, APITokenError, BootstrapError, LensError, LensGroupsError, LensMetadataError };
-export default { BridgeError, CameraKitError, MessageError, MethodNotFoundError, APITokenError, BootstrapError, LensError, LensGroupsError, LensMetadataError };
+export { BridgeError, CameraKitError, MessageError, ProtocolError, MethodNotFoundError, APITokenError, BootstrapError, LensError, LensGroupsError, LensMetadataError };
+export default { BridgeError, CameraKitError, MessageError, ProtocolError, MethodNotFoundError, APITokenError, BootstrapError, LensError, LensGroupsError, LensMetadataError };

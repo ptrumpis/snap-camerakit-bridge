@@ -2,9 +2,14 @@ const Serializable = (Class) => class extends (Class || Object) {
     static registry = new Map();
 
     static register(cls) {
-        if (!this.registry.has(cls.name)) {
+        if (!this.registry.has(cls?.name)) {
             this.registry.set(cls.name, cls);
         }
+        return this;
+    }
+
+    toString() {
+        return `[${this.constructor.name}]`;
     }
 
     toJSON() {

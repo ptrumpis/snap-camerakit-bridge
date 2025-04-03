@@ -1,5 +1,5 @@
 import { Action } from '../common/actions.js';
-import { BridgeError, MessageError, MethodNotFoundError } from '../common/errors.js';
+import { BridgeError, MessageError, MethodNotFoundError, ProtocolError } from '../common/errors.js';
 import { Message, DataMessage, ErrorMessage, ActionMessage, CallMessage } from '../common/messages.js';
 import CameraKitWeb from './web.js';
 
@@ -46,7 +46,7 @@ if (!websocketPort) {
                 const result = await window.cameraKitWeb[method](...params);
                 sendMessage(new DataMessage(result));
             } else {
-                throw new MessageError(`Message '${message.type}' is not supported.`);
+                throw new ProtocolError(`Message '${message}' is not supported`);
             }
         } catch (error) {
             if (!(error instanceof BridgeError)) {

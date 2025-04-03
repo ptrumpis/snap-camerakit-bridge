@@ -4,7 +4,7 @@ import { Serializable } from "./serialize.js";
 class Message extends Serializable() {
     constructor() {
         if (new.target === Message) {
-            throw new Error('Cannot instantiate an abstract class Message directly');
+            throw new Error('Cannot instantiate an abstract class Message directly!');
         }
 
         super();
@@ -54,11 +54,12 @@ class ErrorMessage extends Message {
     }
 }
 
-Message.register(Message);
-ActionMessage.register(ActionMessage);
-CallMessage.register(CallMessage);
-DataMessage.register(DataMessage);
-ErrorMessage.register(ErrorMessage);
+Message
+    .register(Message)
+    .register(ActionMessage)
+    .register(CallMessage)
+    .register(DataMessage)
+    .register(ErrorMessage);
 
 export { Message, ActionMessage, CallMessage, DataMessage, ErrorMessage };
 export default { Message, ActionMessage, CallMessage, DataMessage, ErrorMessage };
