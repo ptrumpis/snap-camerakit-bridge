@@ -59,7 +59,7 @@
         "gencert": "openssl req -x509 -nodes -days 3650 -subj \"/C=CA/ST=QC/O=Snap Inc./CN=localhost\" -newkey rsa:4096 -keyout localhost.key -out localhost.crt",
         "print-key": "base64 localhost.key | tr -d '\n'",
         "print-cert": "base64 localhost.crt | tr -d '\n'",
-        "start-bridge": "npm run install-bridge-deps && node ./docker/index.js",
+        "bridge": "npm run install-bridge-deps && node ./docker/index.js",
         "install-bridge-deps": "npx playwright install --with-deps chromium",
         "test": "mocha tests/**/*.test.js"
     },

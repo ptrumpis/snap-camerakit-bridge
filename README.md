@@ -34,7 +34,7 @@ npm run install-bridge-deps
 
 And start local Bridge with
 ```shell
-npm run start-bridge
+npm run bridge
 ```
 
 ## ℹ️ Info
