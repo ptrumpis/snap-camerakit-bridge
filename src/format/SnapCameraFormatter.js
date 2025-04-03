@@ -11,7 +11,6 @@ class SnapCameraFormatter extends LensFormatter {
         const uuid = SnapCameraFormatter.extractUuidFromDeeplink(deeplinkUrl) || "";
 
         let result = {
-            lens_id: lensId || "",
             unlockable_id: lensId,
             group_id: lens.groupId || "",
             uuid: uuid,
@@ -20,8 +19,6 @@ class SnapCameraFormatter extends LensFormatter {
             user_display_name: (lens.lensCreator?.displayName || "")?.trim(),
             snapcode_url: lens.snapcode?.imageUrl || lens.scannable?.snapcodeImageUrl || SnapCameraFormatter.snapcodeUrl(uuid) || "",
             icon_url: lens.iconUrl || lens.content?.iconUrl || lens.content?.iconUrlBolt || "",
-            lens_url: lens.content?.lnsUrl || lens.content?.lnsUrlBolt || "",
-            sha256: lens.content?.lnsSha256 || "",
             thumbnail_media_url: lens.preview?.imageUrl || lens.content?.preview?.imageUrl || lens.previewImageUrl || lens.lensPreviewImageUrl || "",
             hint_id: lens.content?.defaultHintId || "",
         };
@@ -37,6 +34,14 @@ class SnapCameraFormatter extends LensFormatter {
         if (Array.isArray(lens.content?.assetManifest) && lens.content.assetManifest.length) {
             result.assets = lens.content.assetManifest.map((manifest) => {
                 return manifest.id;
+            });
+        }
+
+        if (lens.content?.lnsUrl || lens.content?.lnsUrlBolt) {
+            Object.assign(result, {
+                lens_id: lensId || "",
+                lens_url: lens.content?.lnsUrl || lens.content?.lnsUrlBolt || "",
+                sha256: lens.content?.lnsSha256 || "",
             });
         }
 
