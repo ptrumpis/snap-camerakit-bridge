@@ -49,7 +49,7 @@ class CameraKitWeb {
 
         let lenses = [];
         try {
-            const result = await this.#cameraKit.lensRepository.loadLensGroups([groupId]);
+            const result = await this.#cameraKit.lensRepository.loadLensGroups(Array.isArray(groupId) ? groupId : [groupId]);
             lenses = result?.lenses || [];
         } catch (e) {
             throw new LensGroupsError(e.message);
