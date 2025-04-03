@@ -1,0 +1,19 @@
+{
+    "id": "58517751140",
+    "groupId": "5823ca90-5e1a-44b4-a007-644cab5c6e64",
+    "name": "Blue Mask",
+    "iconUrl": "https://bolt-gcdn.sc-cdn.net/3/RmrxlpbgZCX10Ffx40hNz?bo=EhgaABoAMgF9OgEEQgYI2br9jAZIAlASYAE%3D&uc=18",
+    "preview": {
+        "imageUrl": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/7bc0879b-1f84-4858-ab65-64fe29950fbc_360_640.webp"
+    },
+    "vendorData": {},
+    "cameraFacingPreference": 0,
+    "lensCreator": {
+        "displayName": "Snapchat"
+    },
+    "snapcode": {
+        "imageUrl": "https://snapcodes.storage.googleapis.com/png/da6e85ed-a125-333e-afb2-ab2a8ecba05b_320_2d574401-04ac-40f1-84f3-dfe98ccdb0d8.png",
+        "deepLink": "https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=a6e97e8087f4466eb61decb67403468e&metadata=01"
+    },
+    "featureMetadata": []
+}

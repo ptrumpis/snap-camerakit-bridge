@@ -1,0 +1,23 @@
+{
+    "unlockable_id": "58517751140",
+    "group_id": "5823ca90-5e1a-44b4-a007-644cab5c6e64",
+    "uuid": "a6e97e8087f4466eb61decb67403468e",
+    "deeplink": "https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=a6e97e8087f4466eb61decb67403468e&metadata=01",
+    "lens_name": "Blue Mask",
+    "user_display_name": "Snapchat",
+    "snapcode_url": "https://snapcodes.storage.googleapis.com/png/da6e85ed-a125-333e-afb2-ab2a8ecba05b_320_2d574401-04ac-40f1-84f3-dfe98ccdb0d8.png",
+    "icon_url": "https://bolt-gcdn.sc-cdn.net/3/RmrxlpbgZCX10Ffx40hNz?bo=EhgaABoAMgF9OgEEQgYI2br9jAZIAlASYAE%3D&uc=18",
+    "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/7bc0879b-1f84-4858-ab65-64fe29950fbc_360_640.webp",
+    "hint_id": "",
+    "image_sequence": {
+        "url_pattern": "https://lens-preview-storage.storage.googleapis.com/previewmedia/7cd1c77d-3a80-4425-9841-c48e2790c648/image_sequence/webp/image_%d.webp",
+        "size": 13,
+        "frame_interval_ms": 300
+    },
+    "assets": [
+        "LENSCORE_DEFAULT_RETOUCH_ASSET"
+    ],
+    "lens_id": "58517751140",
+    "lens_url": "https://bolt-gcdn.sc-cdn.net/3/sox301wOVyzYsElbPJ8hR?bo=EhgaABoAMgF9OgEEQgYI17r9jAZIAlASYAE%3D&uc=18",
+    "sha256": "9CA111AB56C99F6860ED9593F9D4F86E82FF7B5E9ABA115CE39CAC38782CC0C2"
+}

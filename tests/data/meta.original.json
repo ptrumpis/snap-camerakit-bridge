@@ -1,0 +1,39 @@
+{
+    "id": "58517751140",
+    "name": "Blue Mask",
+    "vendorData": {},
+    "content": {
+        "lnsUrl": "https://bolt-gcdn.sc-cdn.net/3/sox301wOVyzYsElbPJ8hR?bo=EhgaABoAMgF9OgEEQgYI17r9jAZIAlASYAE%3D&uc=18",
+        "lnsSha256": "9CA111AB56C99F6860ED9593F9D4F86E82FF7B5E9ABA115CE39CAC38782CC0C2",
+        "iconUrl": "https://cf-st.sc-cdn.net/aps/bolt/aHR0cHM6Ly9ib2x0LWdjZG4uc2MtY2RuLm5ldC8zL1JtcnhscGJnWkNYMTBGZng0MGhOej9ibz1FaGdhQUJvQU1nRjlPZ0VFUWdZSTJicjlqQVpJQWxBU1lBRSUzRCZ1Yz0xOA._FMpng",
+        "preview": {
+            "imageUrl": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/7bc0879b-1f84-4858-ab65-64fe29950fbc_360_640.webp",
+            "imageSequenceSize": 13,
+            "imageSequenceWebpUrlPattern": "https://lens-preview-storage.storage.googleapis.com/previewmedia/7cd1c77d-3a80-4425-9841-c48e2790c648/image_sequence/webp/image_%d.webp"
+        },
+        "assetManifest": [
+            {
+                "type": 0,
+                "id": "LENSCORE_DEFAULT_RETOUCH_ASSET",
+                "requestTiming": 2,
+                "assetUrl": "",
+                "assetChecksum": ""
+            }
+        ],
+        "defaultHintId": "",
+        "hintTranslations": {},
+        "lnsUrlBolt": "https://bolt-gcdn.sc-cdn.net/3/sox301wOVyzYsElbPJ8hR?bo=EhgaABoAMgF9OgEEQgYI17r9jAZIAlASYAE%3D&uc=18",
+        "iconUrlBolt": "https://bolt-gcdn.sc-cdn.net/3/RmrxlpbgZCX10Ffx40hNz?bo=EhgaABoAMgF9OgEEQgYI2br9jAZIAlASYAE%3D&uc=18"
+    },
+    "isThirdParty": false,
+    "cameraFacingPreference": 0,
+    "featureMetadata": [],
+    "lensCreator": {
+        "displayName": "Snapchat"
+    },
+    "scannable": {
+        "snapcodeImageUrl": "https://snapcodes.storage.googleapis.com/png/da6e85ed-a125-333e-afb2-ab2a8ecba05b_320_2d574401-04ac-40f1-84f3-dfe98ccdb0d8.png",
+        "snapcodeDeeplink": "https://www.snapchat.com/unlock/?type=SNAPCODE&uuid=a6e97e8087f4466eb61decb67403468e&metadata=01"
+    },
+    "groupId": "5823ca90-5e1a-44b4-a007-644cab5c6e64"
+}
