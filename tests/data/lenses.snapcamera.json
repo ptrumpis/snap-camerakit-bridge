@@ -33,7 +33,8 @@
         "snapcode_url": "https://snapcodes.storage.googleapis.com/png/ae03e9a3-0b54-3a82-a0c6-471492a0d60d_320.png",
         "icon_url": "https://bolt-gcdn.sc-cdn.net/3/fRwKz0IhCmJbgUnsSH9oc?bo=EhgaABoAMgF9OgEEQgYInP279AVIAlASYAE%3D&uc=18",
         "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/b68ea645-113a-4359-b84b-5cfde9b390ba_360_640.webp",
-        "hint_id": ""
+        "hint_id": "",
+        "camera_facing_preference": 1
     },
     {
         "unlockable_id": "57491440982",
@@ -45,6 +46,7 @@
         "snapcode_url": "https://snapcodes.storage.googleapis.com/png/48fc7243-e4a4-3387-a9db-45e962dbc333_320_555809eb-39ec-4da5-a029-701af59d8f5e.png",
         "icon_url": "https://bolt-gcdn.sc-cdn.net/3/kCjLiFtBjKA3hy1acm4WU?bo=EhgaABoAMgF9OgEEQgYI3eHRhgZIAlASYAE%3D&uc=18",
         "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/ece4cabe-c8db-476d-a7af-89632b11845a_360_640.webp",
-        "hint_id": ""
+        "hint_id": "",
+        "camera_facing_preference": 1
     }
 ]

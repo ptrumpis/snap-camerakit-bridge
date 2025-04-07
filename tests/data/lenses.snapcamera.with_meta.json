@@ -8,6 +8,7 @@
         "user_display_name": "Snapchat",
         "snapcode_url": "https://snapcodes.storage.googleapis.com/png/da6e85ed-a125-333e-afb2-ab2a8ecba05b_320_2d574401-04ac-40f1-84f3-dfe98ccdb0d8.png",
         "icon_url": "https://bolt-gcdn.sc-cdn.net/3/RmrxlpbgZCX10Ffx40hNz?bo=EhgaABoAMgF9OgEEQgYI2br9jAZIAlASYAE%3D&uc=18",
+        "icon_url_alt": "https://cf-st.sc-cdn.net/aps/bolt/aHR0cHM6Ly9ib2x0LWdjZG4uc2MtY2RuLm5ldC8zL1JtcnhscGJnWkNYMTBGZng0MGhOej9ibz1FaGdhQUJvQU1nRjlPZ0VFUWdZSTJicjlqQVpJQWxBU1lBRSUzRCZ1Yz0xOA._FMpng",
         "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/7bc0879b-1f84-4858-ab65-64fe29950fbc_360_640.webp",
         "hint_id": "",
         "image_sequence": {
@@ -31,6 +32,7 @@
         "user_display_name": "Snapchat",
         "snapcode_url": "https://snapcodes.storage.googleapis.com/png/a3efa5de-8545-355f-89e7-b536636a8d38_320_db73a127-bb00-44bd-8d9e-456c3ee9d999.png",
         "icon_url": "https://bolt-gcdn.sc-cdn.net/3/AwVXzK7lQfGUdoSulMR3t?bo=EhgaABoAMgF9OgEEQgYI3LrAgwZIAlASYAE%3D&uc=18",
+        "icon_url_alt": "https://cf-st.sc-cdn.net/aps/bolt/aHR0cHM6Ly9ib2x0LWdjZG4uc2MtY2RuLm5ldC8zL0F3Vlh6SzdsUWZHVWRvU3VsTVIzdD9ibz1FaGdhQUJvQU1nRjlPZ0VFUWdZSTNMckFnd1pJQWxBU1lBRSUzRCZ1Yz0xOA._FMpng",
         "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/105e3c80-96b7-4fb4-b3cf-d8f0173e409b_360_640.webp",
         "hint_id": "",
         "image_sequence": {
@@ -51,8 +53,10 @@
         "user_display_name": "Snapchat",
         "snapcode_url": "https://snapcodes.storage.googleapis.com/png/ae03e9a3-0b54-3a82-a0c6-471492a0d60d_320.png",
         "icon_url": "https://bolt-gcdn.sc-cdn.net/3/fRwKz0IhCmJbgUnsSH9oc?bo=EhgaABoAMgF9OgEEQgYInP279AVIAlASYAE%3D&uc=18",
+        "icon_url_alt": "https://cf-st.sc-cdn.net/aps/bolt/aHR0cHM6Ly9ib2x0LWdjZG4uc2MtY2RuLm5ldC8zL2ZSd0t6MEloQ21KYmdVbnNTSDlvYz9ibz1FaGdhQUJvQU1nRjlPZ0VFUWdZSW5QMjc5QVZJQWxBU1lBRSUzRCZ1Yz0xOA._FMpng",
         "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/b68ea645-113a-4359-b84b-5cfde9b390ba_360_640.webp",
         "hint_id": "",
+        "camera_facing_preference": 1,
         "image_sequence": {
             "url_pattern": "https://lens-preview-storage.storage.googleapis.com/previewmedia/f0a70aa2-a8e2-43c7-9fcc-67dab93cbf56/image_sequence/webp/image_%d.webp",
             "size": 16,
@@ -74,8 +78,10 @@
         "user_display_name": "Snapchat",
         "snapcode_url": "https://snapcodes.storage.googleapis.com/png/48fc7243-e4a4-3387-a9db-45e962dbc333_320_555809eb-39ec-4da5-a029-701af59d8f5e.png",
         "icon_url": "https://bolt-gcdn.sc-cdn.net/3/kCjLiFtBjKA3hy1acm4WU?bo=EhgaABoAMgF9OgEEQgYI3eHRhgZIAlASYAE%3D&uc=18",
+        "icon_url_alt": "https://cf-st.sc-cdn.net/aps/bolt/aHR0cHM6Ly9ib2x0LWdjZG4uc2MtY2RuLm5ldC8zL2tDakxpRnRCaktBM2h5MWFjbTRXVT9ibz1FaGdhQUJvQU1nRjlPZ0VFUWdZSTNlSFJoZ1pJQWxBU1lBRSUzRCZ1Yz0xOA._FMpng",
         "thumbnail_media_url": "https://lens-preview-storage.storage.googleapis.com/previewmedia/preview_thumbnail/ece4cabe-c8db-476d-a7af-89632b11845a_360_640.webp",
         "hint_id": "",
+        "camera_facing_preference": 1,
         "image_sequence": {
             "url_pattern": "https://lens-preview-storage.storage.googleapis.com/previewmedia/76b8ae84-d628-4b9a-b404-38ebda83fb79/image_sequence/webp/image_%d.webp",
             "size": 18,

@@ -88,7 +88,7 @@ describe('CameraKitClient', function () {
             done();
         });
 
-        it('should load a lens', async () => {
+        it('should load a lens without metadata', async () => {
             const lensId = '58517751140';
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
@@ -96,7 +96,7 @@ describe('CameraKitClient', function () {
             assert.deepStrictEqual(result, rawLens);
         });
 
-        it('should load a lens with meta data', async () => {
+        it('should load a lens with metadata', async () => {
             const lensId = '58517751140';
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
@@ -104,14 +104,14 @@ describe('CameraKitClient', function () {
             assert.deepStrictEqual(result, rawLensWithMeta);
         });
 
-        it('should load a lens group', async () => {
+        it('should load a lens group without metadata', async () => {
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
             const result = await client.loadLensGroup(groupId, false);
             assert.deepStrictEqual(result, rawLenses);
         });
 
-        it('should load a lens group with meta data', async () => {
+        it('should load a lens group with metadata', async () => {
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
             const result = await client.loadLensGroup(groupId);
@@ -132,7 +132,7 @@ describe('CameraKitClient', function () {
             done();
         });
 
-        it('should load a lens and format as Snap Camera', async () => {
+        it('should load a lens without metadata and format as Snap Camera', async () => {
             const lensId = '58517751140';
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
@@ -140,7 +140,7 @@ describe('CameraKitClient', function () {
             assert.deepStrictEqual(result, snapCameraLens);
         });
 
-        it('should load a lens with meta data and format as Snap Camera', async () => {
+        it('should load a lens with metadata and format as Snap Camera', async () => {
             const lensId = '58517751140';
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
@@ -148,21 +148,21 @@ describe('CameraKitClient', function () {
             assert.deepStrictEqual(result, snapCameraLensWithMeta);
         });
 
-        it('should load a lens group and format as Snap Camera', async () => {
+        it('should load a lens group without metadata and format as Snap Camera', async () => {
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
             const result = await client.loadLensGroup(groupId, false);
             assert.deepStrictEqual(result, snapCameraLenses);
         });
 
-        it('should load a lens group with meta data and format as Snap Camera', async () => {
+        it('should load a lens group with metadata and format as Snap Camera', async () => {
             const groupId = '5823ca90-5e1a-44b4-a007-644cab5c6e64';
 
             const result = await client.loadLensGroup(groupId);
             assert.deepStrictEqual(result, snapCameraLensesWithMeta);
         });
 
-        it('should get lens metadata  and format as Snap Camera', async () => {
+        it('should get lens metadata and format as Snap Camera', async () => {
             const lensId = '58517751140';
 
             const result = await client.getLensMetadata(lensId);
