@@ -9,15 +9,21 @@ class LensFormatter {
         throw new Error('Cannot call abstract method format() directly!');
     }
 
+    static reverse(lens) {
+        throw new Error('Cannot call abstract method reverse() directly!');
+    }
+
     static snapcodeUrl(uuid) {
-        if (typeof uuid === 'string' && uuid) {
+        const regexExp = /^[a-f0-9]{32}$/i;
+        if (typeof uuid === 'string' && regexExp.test(uuid)) {
             return `https://app.snapchat.com/web/deeplink/snapcode?data=${uuid}&version=1&type=png`;
         }
         return '';
     }
 
     static deeplinkUrl(uuid) {
-        if (typeof uuid === 'string' && uuid) {
+        const regexExp = /^[a-f0-9]{32}$/i;
+        if (typeof uuid === 'string' && regexExp.test(uuid)) {
             return `https://snapchat.com/unlock/?type=SNAPCODE&uuid=${uuid}&metadata=01`;
         }
         return '';

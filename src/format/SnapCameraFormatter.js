@@ -18,8 +18,8 @@ class SnapCameraFormatter extends LensFormatter {
             lens_name: (lens.name || "")?.trim(),
             user_display_name: (lens.lensCreator?.displayName || "")?.trim(),
             snapcode_url: lens.snapcode?.imageUrl || lens.scannable?.snapcodeImageUrl || SnapCameraFormatter.snapcodeUrl(uuid) || "",
-            icon_url: lens.iconUrl || lens.content?.iconUrl || lens.content?.iconUrlBolt || "",
-            thumbnail_media_url: lens.preview?.imageUrl || lens.content?.preview?.imageUrl || lens.previewImageUrl || lens.lensPreviewImageUrl || "",
+            icon_url: lens.iconUrl || lens.content?.iconUrlBolt || lens.content?.iconUrl || "",
+            thumbnail_media_url: lens.preview?.imageUrl || lens.content?.preview?.imageUrl || "",
             hint_id: lens.content?.defaultHintId || "",
         };
 
@@ -43,6 +43,92 @@ class SnapCameraFormatter extends LensFormatter {
                 lens_url: lens.content?.lnsUrl || lens.content?.lnsUrlBolt || "",
                 sha256: lens.content?.lnsSha256 || "",
             });
+        }
+
+        // additional info for accurate reversing
+        if (typeof lens.isThirdParty === 'boolean' && lens.isThirdParty) {
+            result.is_third_party = lens.isThirdParty;
+        }
+
+        if (typeof lens.cameraFacingPreference === 'number' && lens.cameraFacingPreference) {
+            result.camera_facing_preference = lens.cameraFacingPreference;
+        }
+
+        if (lens.content?.iconUrl && lens.content.iconUrl !== result.icon_url) {
+            result.icon_url_alt = lens.content.iconUrl;
+        }
+
+        return result;
+    }
+
+    static reverse(lens) {
+        if (!lens) {
+            return {};
+        }
+
+        const uuid = lens.uuid || SnapCameraFormatter.extractUuidFromDeeplink(lens.deeplink) || "";
+        const lensId = lens.unlockable_id || lens.lens_id || "";
+        const deeplinkUrl = lens.deeplink || SnapCameraFormatter.deeplinkUrl(uuid) || "";
+        const snapcodeUrl = lens.snapcode_url || SnapCameraFormatter.snapcodeUrl(uuid) || "";
+
+        const result = {
+            id: lensId,
+            name: lens.lens_name || "",
+            groupId: lens.group_id || "",
+            iconUrl: lens.icon_url || "",
+            lensCreator: {
+                displayName: lens.user_display_name || "",
+            },
+            snapcode: {
+                deepLink: deeplinkUrl,
+                imageUrl: snapcodeUrl,
+            },
+            scannable: {
+                snapcodeDeeplink: deeplinkUrl,
+                snapcodeImageUrl: snapcodeUrl,
+            },
+            content: undefined,
+            preview: {
+                imageUrl: lens.thumbnail_media_url || "",
+            },
+            cameraFacingPreference: lens.camera_facing_preference || 0,
+            vendorData: {},
+            featureMetadata: []
+        };
+
+        if (lens.is_third_party || lens.lens_url) {
+            result.isThirdParty = (lens.is_third_party) ? true : false;
+        }
+
+        if (lens.lens_url) {
+            result.content = {
+                lnsUrl: lens.lens_url || "",
+                lnsSha256: lens.sha256 || "",
+                iconUrl: lens.icon_url_alt || lens.icon_url || "",
+                preview: {
+                    imageUrl: lens.thumbnail_media_url || "",
+                    ...(lens.image_sequence ? {
+                        imageSequenceWebpUrlPattern: lens.image_sequence.url_pattern || "",
+                        imageSequenceSize: lens.image_sequence.size || 0,
+                    } : {})
+                },
+                assetManifest: Array.isArray(lens.assets)
+                    ? lens.assets.map(id => ({
+                        id,
+                        assetChecksum: "",
+                        assetUrl: "",
+                        requestTiming: 2,
+                        type: 0,
+                    }))
+                    : [],
+                defaultHintId: lens.hint_id || "",
+                hintTranslations: {},
+                lnsUrlBolt: lens.lens_url || "",
+                iconUrlBolt: lens.icon_url || "",
+            };
+        } else {
+            delete result.content;
+            delete result.scannable;
         }
 
         return result;
