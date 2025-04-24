@@ -79,7 +79,7 @@
         "@snap/camera-kit": "~1.4.0",
         "http-server": "~14.1.1",
         "playwright": "~1.51.1",
-        "protobufjs": "~7.4.0",
+        "protobufjs": "~7.5.0",
         "ws": "~8.18.1"
     },
     "devDependencies": {
