@@ -78,13 +78,13 @@
     "dependencies": {
         "@snap/camera-kit": "~1.4.0",
         "http-server": "~14.1.1",
-        "playwright": "~1.51.1",
+        "playwright": "~1.52",
         "protobufjs": "~7.5.0",
         "ws": "~8.18.1"
     },
     "devDependencies": {
-        "mocha": "^11.1.0",
-        "sinon": "^20.0.0",
+        "mocha": "~11.1.0",
+        "sinon": "~20.0.0",
         "terser-webpack-plugin": "~5.3.14",
         "webpack": "~5.99.6",
         "webpack-cli": "~6.0.1"
