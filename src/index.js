@@ -16,4 +16,14 @@ export * from './common/actions.js';
 export * from './common/errors.js';
 export * from './common/messages.js';
 
-export default { CameraKitBridge, CameraKitClient, CameraKitServer, ...Formatters, ...Actions, ...Errors, ...Messages };
+const stripDefault = ({ default: _default, ...rest }) => rest;
+
+export default { 
+    CameraKitBridge,
+    CameraKitClient,
+    CameraKitServer,
+    ...stripDefault(Formatters),
+    ...stripDefault(Actions),
+    ...stripDefault(Errors),
+    ...stripDefault(Messages),
+};
