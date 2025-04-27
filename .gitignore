@@ -1,4 +1,5 @@
 /.vscode/
+/debug/
 /node_modules/
 *.crt
 *.key
