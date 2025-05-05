@@ -84,7 +84,7 @@
         "ws": "~8.18.1"
     },
     "devDependencies": {
-        "mocha": "~11.1.0",
+        "mocha": "~11.2.2",
         "sinon": "~20.0.0",
         "terser-webpack-plugin": "~5.3.14",
         "webpack": "~5.99.6",
